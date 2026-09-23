@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRĀTA | Visitor Review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#020713;color:#eafcff;font-family:Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(0,220,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,220,255,.04) 1px,transparent 1px);background-size:36px 36px;animation:grid 12s linear infinite}@keyframes grid{to{background-position:0 36px,36px 0}}
+.orb{position:fixed;width:300px;height:300px;border-radius:50%;background:#00d9ff18;filter:blur(25px);left:-100px;top:10%;animation:f 7s ease-in-out infinite;pointer-events:none}.o2{left:auto;right:-100px;top:55%;animation-delay:2s}@keyframes f{50%{transform:translateY(-45px) scale(1.1)}}
+.wrap{width:min(920px,92%);margin:auto;padding:25px 0 50px}.hero{text-align:center;padding:40px 0 20px}.logo{font-size:clamp(44px,11vw,86px);font-weight:900;letter-spacing:9px;color:#00eaff;text-shadow:0 0 35px #00eaff66;animation:p 3s ease-in-out infinite}@keyframes p{50%{text-shadow:0 0 65px #00eaffbb}}.hero p{letter-spacing:3px;color:#82cbd5}
+.card{background:#061322e9;border:1px solid #00d9ff44;border-radius:22px;padding:24px;margin:15px 0;box-shadow:0 0 35px #00d9ff0b;animation:up .7s ease both}@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.intro p,.project p{color:#b7d6dc;line-height:1.7}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.steps div{border:1px solid #00d9ff25;background:#071b2b;padding:15px;border-radius:14px}.steps b{display:block;color:#00eaff;font-size:12px;letter-spacing:2px;margin-bottom:7px}.steps span{color:#9fc1c8;font-size:13px;line-height:1.5}.project{border-top:1px solid #00d9ff22;padding:15px 0}.project:first-of-type{border-top:0}.project h3{color:#00eaff;margin:0 0 5px}.thanks{font-size:18px;font-weight:900;color:#00eaff}label{display:block;color:#81dce8;font-size:12px;letter-spacing:1px;margin:15px 0 7px}input,textarea{width:100%;background:#020b16;color:white;border:1px solid #00d9ff45;border-radius:12px;padding:13px;font-size:15px}textarea{min-height:125px;resize:vertical}
+.stars{display:flex;gap:8px}.star{width:50px;height:50px;border-radius:12px;border:1px solid #00d9ff55;background:#071b2b;color:#dff;cursor:pointer;font-size:24px}.star.on{background:#00abc5;color:#001018}
+.btn{width:100%;margin-top:18px;padding:15px;border:0;border-radius:13px;background:linear-gradient(90deg,#00a8c4,#00eaff);font-weight:900;color:#001018;cursor:pointer}.hint{color:#6f9ba5;font-size:12px;line-height:1.5}.success{text-align:center;display:none}.success h2{color:#00eaff;font-size:30px}.footer{text-align:center;color:#527e87;font-size:11px;margin-top:30px}
+</style>
+</head>
+<body><div class="orb"></div><div class="orb o2"></div><main class="wrap">
+<section class="hero"><div class="logo">TRĀTA</div><p>VISITOR REVIEW SYSTEM</p><div class="hint">Your feedback helps us improve our disaster-response technology.</div></section>
+<section class="card intro">
+<h2>About PROJECT TRĀTA</h2>
+<p>TRĀTA is an autonomous disaster-response concept designed to support safer and faster emergency operations. The system combines a rescue rover, aerial monitoring, sensors and a control interface to help inspect difficult or unsafe areas and assist responders with situational information.</p>
+<div class="steps"><div><b>01</b><span>Scan the QR code or tap the NFC tag.</span></div><div><b>02</b><span>Explore the project and share your experience.</span></div><div><b>03</b><span>Submit your rating, review and suggestions.</span></div></div>
+</section>
+<section class="card" id="formCard"><h2>Share Your Experience</h2>
+<form id="reviewForm">
+<label>Name (optional)</label><input id="name" maxlength="80" placeholder="Your name">
+<label>Overall rating</label><div class="stars" aria-label="Choose rating">
+<button type="button" class="star" data-v="1" aria-label="1 star">★</button><button type="button" class="star" data-v="2" aria-label="2 stars">★</button><button type="button" class="star" data-v="3" aria-label="3 stars">★</button><button type="button" class="star" data-v="4" aria-label="4 stars">★</button><button type="button" class="star" data-v="5" aria-label="5 stars">★</button></div>
+<label>Your review</label><textarea id="review" maxlength="1500" required placeholder="What did you think about TRĀTA?"></textarea>
+<label>What should we improve or add?</label><textarea id="suggestion" maxlength="1000" placeholder="Your idea for a future version"></textarea>
+<label>Upload a photo (optional)</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"><div class="hint">Maximum 5 MB. Upload only a photo you have permission to share.</div>
+<button class="btn">SUBMIT REVIEW</button>
+</form></section>
+<section class="card projects"><h2>Our Projects</h2><div class="project"><h3>TRĀTA Rescue Rover</h3><p>A ground rescue platform with obstacle detection, sensor monitoring, manual control and autonomous movement for initial inspection of difficult areas.</p></div><div class="project"><h3>TRĀTA Aerial Monitoring</h3><p>A drone-based concept for aerial observation and situational awareness, helping responders understand conditions before entering an area.</p></div><div class="project"><h3>TRĀTA Control &amp; Intelligence</h3><p>A digital interface that brings project information, sensor readings and control functions together for clearer emergency-response decisions.</p></div></section>
+<section class="card success" id="success"><h2>THANK YOU</h2><p>Thank you for your valuable feedback.</p><p class="thanks">Team TRĀTA</p><p class="hint">Your feedback helps us improve our ideas, design and future versions of the project.</p></section>
+<div class="footer">PROJECT TRĀTA • Autonomous Disaster Response System • Built for innovation and safer disaster response</div>
+</main>
+<script>
+let rating=0;
+document.querySelectorAll('.star').forEach(b=>b.onclick=()=>{rating=+b.dataset.v;document.querySelectorAll('.star').forEach(x=>x.classList.toggle('on',+x.dataset.v<=rating))});
+reviewForm.onsubmit=e=>{e.preventDefault();if(!rating)return alert('Please select a rating.');let f=photo.files[0];if(f&&f.size>5242880)return alert('Please choose an image under 5 MB.');let r={name:name.value.trim(),rating,review:review.value.trim(),suggestion:suggestion.value.trim(),photo:f?f.name:'',created_at:new Date().toISOString()};let a=JSON.parse(localStorage.getItem('trata_reviews')||'[]');a.push(r);localStorage.setItem('trata_reviews',JSON.stringify(a));formCard.style.display='none';success.style.display='block'};
+</script></body></html>
