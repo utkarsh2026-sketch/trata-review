@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020711">
+<title>TRĀTA | Visitor Feedback</title>
+<style>
+:root{--cyan:#00eaff;--blue:#168cff;--bg:#020711;--panel:rgba(5,20,35,.82);--line:rgba(0,234,255,.28);--muted:#8eb6c2;--white:#effcff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0,#07304b 0,#020711 38%,#01050c 100%);color:var(--white);font-family:Inter,Segoe UI,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px);background-size:42px 42px;animation:grid 14s linear infinite;z-index:-4}@keyframes grid{to{background-position:42px 42px}}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(transparent 0%,rgba(0,234,255,.055) 50%,transparent 100%);height:18vh;animation:scan 6s linear infinite;z-index:-2}@keyframes scan{from{transform:translateY(-25vh)}to{transform:translateY(110vh)}}
+.wrap{width:min(1050px,92%);margin:auto;padding:18px 0 70px;position:relative}.orb{position:fixed;width:360px;height:360px;border-radius:50%;background:#00d9ff14;filter:blur(28px);left:-150px;top:12%;animation:orb 9s ease-in-out infinite;pointer-events:none;z-index:-3}.orb.two{left:auto;right:-160px;top:55%;animation-delay:2s;background:#147dff16}@keyframes orb{50%{transform:translate(55px,-45px) scale(1.15)}}
+.hero{position:relative;text-align:center;padding:58px 0 34px;min-height:300px;overflow:hidden}.hero:before{content:"";position:absolute;width:260px;height:260px;border:1px solid #00eaff30;border-radius:50%;left:50%;top:10px;transform:translateX(-50%);box-shadow:0 0 80px #00eaff12;animation:spin 18s linear infinite}.hero:after{content:"";position:absolute;width:185px;height:185px;border:1px dashed #168cff55;border-radius:50%;left:50%;top:48px;transform:translateX(-50%);animation:spin 10s linear infinite reverse}.logo{position:relative;z-index:2;font-size:clamp(52px,14vw,100px);font-weight:950;letter-spacing:12px;color:var(--cyan);text-shadow:0 0 18px #00eaff88,0 0 55px #00eaff44;animation:logo 3s ease-in-out infinite}@keyframes logo{50%{text-shadow:0 0 32px #00eaffcc,0 0 90px #00eaff55}}.hero h1{position:relative;z-index:2;margin:8px 0;color:#fff;font-size:clamp(25px,6vw,46px);letter-spacing:3px}.hero p{position:relative;z-index:2;color:#8ecbd6;max-width:680px;margin:10px auto;line-height:1.7}.hero .cta{position:relative;z-index:2;display:inline-block;margin-top:15px;padding:12px 24px;border:1px solid var(--cyan);border-radius:999px;color:#001018;background:#00eaff12;text-decoration:none;box-shadow:0 0 22px #00eaff20;transition:.25s}.hero .cta:hover{background:#00eaff;color:#001018;transform:translateY(-2px)}
+.hud{position:absolute;inset:0;pointer-events:none}.hud i{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan);animation:dot 3s ease-in-out infinite}.hud i:nth-child(1){left:8%;top:30%}.hud i:nth-child(2){right:12%;top:22%;animation-delay:1s}.hud i:nth-child(3){left:18%;bottom:22%;animation-delay:1.7s}.hud i:nth-child(4){right:20%;bottom:28%;animation-delay:2.2s}@keyframes dot{50%{transform:scale(2.4);opacity:.35}}
+.card{background:linear-gradient(145deg,rgba(7,24,40,.92),rgba(2,11,20,.88));border:1px solid var(--line);border-radius:24px;padding:clamp(18px,4vw,30px);margin:18px 0;box-shadow:0 0 40px #00eaff0b,inset 0 0 35px #00eaff05;position:relative;overflow:hidden}.card:before{content:"";position:absolute;left:0;top:0;width:120px;height:1px;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}.card h2{margin:0 0 10px;color:#fff;letter-spacing:1px}.intro p,.project p{color:#b7d4db;line-height:1.75}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}.step{position:relative;overflow:hidden;border:1px solid #00d9ff30;background:#061b2b;padding:19px;border-radius:17px;transition:.3s}.step:hover{transform:translateY(-5px);border-color:#00eaff77;box-shadow:0 0 25px #00eaff12}.step:after{content:"";position:absolute;width:80px;height:80px;border:1px solid #00eaff18;border-radius:50%;right:-35px;bottom:-35px;animation:spin 8s linear infinite}.step b{display:block;color:var(--cyan);font-size:12px;letter-spacing:3px;margin-bottom:8px}.step strong{display:block;font-size:16px;margin-bottom:5px}.step span{color:#9fc1c8;font-size:13px;line-height:1.5}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.full{grid-column:1/-1}label{display:block;color:#8de2ed;font-size:12px;letter-spacing:1.2px;margin:17px 0 7px}input,textarea,select{width:100%;background:#020b16;color:#f2feff;border:1px solid #00d9ff45;border-radius:13px;padding:13px;font-size:15px;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 18px #00eaff10}textarea{min-height:120px;resize:vertical}.hint{color:#7199a3;font-size:12px;line-height:1.5}
+.rating-box{padding:15px;border:1px solid #00d9ff20;border-radius:16px;background:#03111d}.rating-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.rating-value{color:var(--cyan);font-weight:800}.stars{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.star{width:50px;height:50px;border-radius:14px;border:1px solid #00d9ff42;background:#061b2b;color:#52727b;cursor:pointer;font-size:27px;transition:.2s}.star:hover{transform:translateY(-3px);border-color:var(--cyan)}.star.on{color:#ffd45c;text-shadow:0 0 16px #ffd45c;background:#1b1607;border-color:#ffd45c77;transform:translateY(-2px)}
+.style-picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.style-btn{border:1px solid #00d9ff32;background:#071927;color:#9fc1c8;border-radius:10px;padding:8px 10px;cursor:pointer;font-size:12px}.style-btn.active{border-color:var(--cyan);color:#fff;background:#00eaff13}.style-preview{color:#ffd45c;font-size:18px;margin-right:5px}.signature-wrap{position:relative;border:1px dashed #00eaff55;border-radius:15px;background:#020b16;height:170px;overflow:hidden}.signature-wrap canvas{width:100%;height:100%;display:block;touch-action:none}.sig-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}.mini{padding:8px 13px;border:1px solid #00d9ff45;background:#071927;color:#bceaf0;border-radius:9px;cursor:pointer}.filebox{border:1px dashed #00eaff55;padding:15px;border-radius:14px}.btn{width:100%;margin-top:20px;padding:16px;border:1px solid #75f6ff;border-radius:14px;background:linear-gradient(90deg,#00a8c4,#00eaff);font-weight:900;letter-spacing:1px;color:#001018;cursor:pointer;box-shadow:0 0 30px #00eaff22;transition:.25s}.btn:hover{transform:translateY(-2px);box-shadow:0 0 45px #00eaff40}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.project{border:1px solid #00d9ff27;background:#061826;padding:20px;border-radius:18px;min-height:190px;position:relative;overflow:hidden}.project:before{content:"";position:absolute;width:130px;height:130px;border-radius:50%;border:1px solid #00eaff18;right:-65px;top:-65px;animation:spin 12s linear infinite}.project h3{color:var(--cyan);margin:0 0 7px}.project p{font-size:13px}.tag{display:inline-block;margin-top:8px;color:#78ddea;font-size:11px;letter-spacing:1px}
+.success{text-align:center;display:none;padding:45px 20px}.success .big{font-size:clamp(30px,8vw,52px);color:var(--cyan);text-shadow:0 0 25px #00eaff66}.thanks{font-size:22px;font-weight:900;color:#fff}.signature-display{margin:22px auto 0;max-width:420px;border-top:1px solid #00eaff55;padding-top:15px;color:#86bac3}.credits{text-align:center;margin:35px 0 5px;padding:25px 10px;border-top:1px solid #00eaff20}.credits .title{color:#688f98;font-size:11px;letter-spacing:4px}.credits .team{color:var(--cyan);font-size:25px;font-weight:900;letter-spacing:3px;margin:8px}.credits p{color:#8fb5bd;margin:6px}.footer{text-align:center;color:#527e87;font-size:11px;margin-top:25px}
+.particle{position:fixed;width:3px;height:3px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan);pointer-events:none;z-index:-1;opacity:.55;animation:float linear infinite}.radar{position:fixed;right:20px;bottom:20px;width:95px;height:95px;border:1px solid #00eaff25;border-radius:50%;pointer-events:none;opacity:.55}.radar:before{content:"";position:absolute;inset:10px;border:1px dashed #00eaff25;border-radius:50%}.radar:after{content:"";position:absolute;left:50%;top:50%;width:42px;height:1px;background:linear-gradient(90deg,#00eaff,transparent);transform-origin:left center;animation:radar 2.5s linear infinite}@keyframes radar{to{transform:rotate(360deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{from{transform:translateY(105vh) translateX(0)}to{transform:translateY(-10vh) translateX(80px);opacity:0}}
+@media(max-width:760px){.wrap{width:min(94%,1050px)}.steps,.projects-grid,.form-grid{grid-template-columns:1fr}.hero{padding-top:42px;min-height:270px}.hero:before{width:220px;height:220px}.hero:after{width:155px;height:155px}.logo{letter-spacing:7px}.card{border-radius:19px}.star{width:46px;height:46px}.radar{width:70px;height:70px;right:8px;bottom:8px}.credits .team{font-size:20px}}
+
+.admin-toggle{display:inline-flex;align-items:center;justify-content:center;margin-top:18px;padding:10px 16px;border:1px solid #00d9ff38;border-radius:999px;background:#061826;color:#9fc1c8;text-decoration:none;font-size:12px;cursor:pointer}.admin-toggle:hover{color:#fff;border-color:#00eaff77}.admin-panel{display:none}.admin-login{max-width:520px;margin:0 auto}.admin-tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.admin-tools button{padding:10px 14px;border:1px solid #00d9ff45;background:#071927;color:#dffcff;border-radius:10px;cursor:pointer}.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.admin-stat{background:#061826;border:1px solid #00d9ff22;border-radius:14px;padding:16px}.admin-stat b{font-size:24px;color:var(--cyan)}.admin-review{border-top:1px solid #00d9ff22;padding:18px 0}.admin-review img{max-width:180px;max-height:120px;border-radius:10px;border:1px solid #00d9ff35}.admin-sig{display:block;max-width:280px;max-height:100px;margin-top:10px;border:1px solid #00d9ff30;border-radius:8px;background:#020b16}.notice{padding:12px;border-radius:10px;background:#071927;border:1px solid #00d9ff22;color:#9fc1c8;font-size:12px}@media(max-width:650px){.admin-stats{grid-template-columns:1fr}.admin-toggle{width:100%}}
+</style>
+</head>
+<body>
+<div class="orb"></div><div class="orb two"></div><div class="radar"></div>
+<main class="wrap">
+<section class="hero">
+<div class="hud"><i></i><i></i><i></i><i></i></div>
+<div class="logo">TRĀTA</div>
+<h1>YOUR FEEDBACK BUILDS A SAFER TOMORROW</h1>
+<p>Explore PROJECT TRĀTA, share your experience, and help us improve our ideas for smarter disaster-response technology.</p>
+<a class="cta" href="#feedback">Give Feedback Now</a>
+</section>
+
+<section class="card intro">
+<h2>About PROJECT TRĀTA</h2>
+<p>TRĀTA is an autonomous disaster-response concept designed to support safer and faster emergency operations. It combines a rescue rover, aerial monitoring, sensors and a digital control interface to help inspect difficult areas and provide useful situational information to responders.</p>
+<div class="steps">
+<div class="step"><b>01</b><strong>Scan & Connect</strong><span>Scan the QR code or tap the NFC tag to open this review page.</span></div>
+<div class="step"><b>02</b><strong>Explore TRĀTA</strong><span>Learn about our rover, aerial monitoring concept and control system.</span></div>
+<div class="step"><b>03</b><strong>Share Your Feedback</strong><span>Rate the project, write your thoughts and suggest future improvements.</span></div>
+</div></section>
+
+<section class="card" id="feedback">
+<h2>Share Your Experience</h2><p class="hint">Your feedback helps Team TRĀTA improve the project and prepare future versions.</p>
+<form id="reviewForm">
+<div class="form-grid">
+<div><label for="name">Name (optional)</label><input id="name" maxlength="80" placeholder="Your name"></div>
+<div><label for="visitor">Visitor type (optional)</label><select id="visitor"><option value="">Select</option><option>Student</option><option>Teacher</option><option>Parent</option><option>Judge</option><option>Visitor</option><option>Other</option></select></div>
+<div class="full"><label>Overall rating</label><div class="rating-box"><div class="rating-top"><span class="hint">Tap a star to rate</span><span class="rating-value" id="ratingValue">Not selected</span></div><div class="stars" id="stars"></div><div class="style-picker" id="stylePicker"></div></div></div>
+<div class="full"><label for="review">Your review</label><textarea id="review" maxlength="1500" required placeholder="What did you think about PROJECT TRĀTA?"></textarea></div>
+<div><label for="suggestion">What should we improve?</label><textarea id="suggestion" maxlength="1000" placeholder="Your idea for a future version"></textarea></div>
+<div><label for="photo">Upload a photo (optional)</label><div class="filebox"><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"><div class="hint">Maximum 5 MB. Upload only a photo you have permission to share.</div></div></div>
+<div class="full"><label>Your signature (optional)</label><div class="signature-wrap"><canvas id="signature"></canvas></div><div class="sig-actions"><button class="mini" type="button" id="clearSig">Clear Signature</button></div></div>
+</div>
+<button class="btn" type="submit">SUBMIT FEEDBACK</button>
+</form></section>
+
+<section class="card projects"><h2>Our Projects</h2><p class="hint">A small ecosystem of ideas built around disaster response, sensing and safer decision support.</p><div class="projects-grid">
+<div class="project"><h3>TRĀTA Rescue Rover</h3><p>Ground rescue platform with obstacle detection, sensor monitoring, manual control and autonomous movement for initial inspection of difficult areas.</p><span class="tag">GROUND RESPONSE</span></div>
+<div class="project"><h3>TRĀTA Aerial Monitoring</h3><p>Drone-based concept for aerial observation and situational awareness, helping responders understand conditions before entering an area.</p><span class="tag">AERIAL OBSERVATION</span></div>
+<div class="project"><h3>TRĀTA Control &amp; Intelligence</h3><p>Digital interface that brings project information, sensor readings and control functions together for clearer emergency-response decisions.</p><span class="tag">CONTROL SYSTEM</span></div>
+</div></section>
+
+<section class="card success" id="success"><div class="big">THANK YOU</div><p>Thank you for your valuable feedback.</p><p class="thanks">Team TRĀTA</p><p class="hint">Your response has been recorded on this device. Your ideas help us improve our design and future versions.</p><div class="signature-display">With appreciation from the TRĀTA Team<div id="successSignature"></div></div></section>
+
+<section class="card admin-panel" id="adminPanel">
+<h2>TRĀTA Admin Dashboard</h2>
+<div id="adminLogin" class="admin-login">
+<p class="hint">Administrator access. Password characters are hidden while typing.</p>
+<input id="adminPassword" type="password" inputmode="text" autocomplete="current-password" placeholder="Enter admin password" aria-label="Admin password">
+<button class="btn" type="button" id="adminLoginBtn">UNLOCK ADMIN PANEL</button>
+<div id="adminLoginMsg" class="hint" style="margin-top:10px"></div>
+</div>
+<div id="adminContent" style="display:none">
+<div class="admin-stats"><div class="admin-stat"><b id="adminTotal">0</b><div class="hint">Total reviews</div></div><div class="admin-stat"><b id="adminAvg">0</b><div class="hint">Average rating</div></div><div class="admin-stat"><b id="adminPhotos">0</b><div class="hint">Photos / signatures</div></div></div>
+<div class="admin-tools"><button type="button" id="adminRefresh">Refresh</button><button type="button" id="adminExport">Export CSV</button><button type="button" id="adminClear">Clear local reviews</button><button type="button" id="adminClose">Close Admin</button></div>
+<div class="notice">This dashboard reads reviews saved in this browser. A shared multi-device database will require Supabase or another backend.</div>
+<div id="adminList" class="card" style="margin-top:14px"></div>
+</div></section>
+
+<div style="text-align:center"><button class="admin-toggle" type="button" id="adminOpen">Administrator Access</button></div>
+<section class="credits"><div class="title">DESIGNED BY</div><div class="team">TEAM TRĀTA</div><p><strong>Utkarsh Mall</strong> &nbsp;•&nbsp; <strong>Ali Azhaan</strong></p><p>Mentor: <strong>Mr. Saquib Akhtar</strong></p></section>
+<div class="footer">PROJECT TRĀTA • Autonomous Disaster Response System • Science, innovation and safer disaster response</div>
+</main>
+<script>
+const ADMIN_PASSWORD='UTKARSH12';
+const starSets=[
+{name:'Classic',chars:['☆','★']},{name:'Spark',chars:['✧','✦']},{name:'Diamond',chars:['◇','◆']},{name:'Burst',chars:['✩','✪']},{name:'Crystal',chars:['✧','✹']},{name:'Orbit',chars:['✶','✷']},{name:'Tech',chars:['✦','✸']},{name:'Outline',chars:['✩','★']}
+];
+let rating=0,starStyle=0;
+const starsEl=document.getElementById('stars'),styleEl=document.getElementById('stylePicker'),ratingValue=document.getElementById('ratingValue');
+function renderStars(){starsEl.innerHTML='';const s=starSets[starStyle];for(let i=1;i<=5;i++){const b=document.createElement('button');b.type='button';b.className='star'+(i<=rating?' on':'');b.dataset.v=i;b.textContent=i<=rating?s.chars[1]:s.chars[0];b.setAttribute('aria-label',i+' star');b.onclick=()=>{rating=i;renderStars();ratingValue.textContent=i+' / 5'};starsEl.appendChild(b)}}
+starSets.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='style-btn'+(i===0?' active':'');b.innerHTML='<span class="style-preview">'+s.chars[1]+'</span>'+s.name;b.onclick=()=>{starStyle=i;document.querySelectorAll('.style-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderStars()};styleEl.appendChild(b)});renderStars();
+for(let i=0;i<28;i++){const p=document.createElement('span');p.className='particle';p.style.left=(Math.random()*100)+'vw';p.style.animationDuration=(8+Math.random()*13)+'s';p.style.animationDelay=(-Math.random()*18)+'s';p.style.opacity=(.25+Math.random()*.5);document.body.appendChild(p)}
+// Signature canvas: touch + mouse + pen, with visible writing area
+const canvas=document.getElementById('signature'),ctx=canvas.getContext('2d',{willReadFrequently:true});let drawing=false,last=null;
+function resizeCanvas(){const r=canvas.getBoundingClientRect(),d=Math.max(1,window.devicePixelRatio||1),old=canvas.toDataURL();canvas.width=Math.max(1,Math.floor(r.width*d));canvas.height=Math.max(1,Math.floor(r.height*d));ctx.setTransform(d,0,0,d,0,0);ctx.strokeStyle='#00eaff';ctx.lineWidth=2.4;ctx.lineCap='round';ctx.lineJoin='round';}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+function point(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function start(e){drawing=true;last=point(e);canvas.setPointerCapture?.(e.pointerId);e.preventDefault()}
+function move(e){if(!drawing)return;const p=point(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;e.preventDefault()}
+function end(e){drawing=false;last=null;if(e?.pointerId!=null)try{canvas.releasePointerCapture?.(e.pointerId)}catch(_){} }
+canvas.addEventListener('pointerdown',start);canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end);canvas.addEventListener('pointerleave',e=>{if(drawing)move(e)});
+document.getElementById('clearSig').addEventListener('click',()=>{ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight)});
+function hasInk(){const w=canvas.width,h=canvas.height;const d=ctx.getImageData(0,0,w,h).data;for(let i=3;i<d.length;i+=4)if(d[i]>10)return true;return false}
+function getReviews(){try{return JSON.parse(localStorage.getItem('trata_reviews')||'[]')}catch(_){return []}}
+function saveReviews(a){localStorage.setItem('trata_reviews',JSON.stringify(a))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+const reviewForm=document.getElementById('reviewForm');
+reviewForm.addEventListener('submit',e=>{e.preventDefault();if(!rating){alert('Please select a rating.');return}const f=document.getElementById('photo').files[0];if(f&&f.size>5242880){alert('Please choose an image under 5 MB.');return}
+const sig=hasInk()?canvas.toDataURL('image/png'):'';const r={name:document.getElementById('name').value.trim(),visitor:document.getElementById('visitor').value,rating,starStyle:starSets[starStyle].name,review:document.getElementById('review').value.trim(),suggestion:document.getElementById('suggestion').value.trim(),photo:f?f.name:'',signature:sig,created_at:new Date().toISOString()};const a=getReviews();a.push(r);saveReviews(a);reviewForm.reset();rating=0;starStyle=0;ratingValue.textContent='Not selected';renderStars();document.querySelectorAll('.style-btn').forEach((x,i)=>x.classList.toggle('active',i===0));ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);document.getElementById('feedback').style.display='none';document.getElementById('success').style.display='block';document.getElementById('successSignature').innerHTML=sig?'<img class="admin-sig" alt="Visitor signature" src="'+sig+'">':'';window.scrollTo({top:0,behavior:'smooth'})});
+// Unified admin inside the same page
+const adminPanel=document.getElementById('adminPanel');
+document.getElementById('adminOpen').addEventListener('click',()=>{adminPanel.style.display='block';adminPanel.scrollIntoView({behavior:'smooth'});});
+document.getElementById('adminClose').addEventListener('click',()=>{adminPanel.style.display='none';document.getElementById('adminContent').style.display='none';document.getElementById('adminLogin').style.display='block';document.getElementById('adminPassword').value='';});
+document.getElementById('adminLoginBtn').addEventListener('click',()=>{const ok=document.getElementById('adminPassword').value===ADMIN_PASSWORD;document.getElementById('adminLoginMsg').textContent=ok?'Access granted.':'Incorrect password.';if(ok){document.getElementById('adminLogin').style.display='none';document.getElementById('adminContent').style.display='block';loadAdmin()}});
+document.getElementById('adminPassword').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('adminLoginBtn').click()});
+function loadAdmin(){const a=getReviews();document.getElementById('adminTotal').textContent=a.length;document.getElementById('adminAvg').textContent=a.length?(a.reduce((x,r)=>x+Number(r.rating||0),0)/a.length).toFixed(1):'0';document.getElementById('adminPhotos').textContent=a.filter(r=>r.photo||r.signature).length;const list=document.getElementById('adminList');list.innerHTML=a.slice().reverse().map(r=>'<div class="admin-review"><b>'+esc(r.name||'Anonymous')+'</b><div class="hint">'+esc(r.visitor||'Visitor')+' • '+new Date(r.created_at).toLocaleString()+'</div><div class="stars">'+('★'.repeat(Number(r.rating)||0))+('☆'.repeat(5-(Number(r.rating)||0)))+'</div><p>'+esc(r.review)+'</p>'+(r.suggestion?'<p><b>Suggestion:</b> '+esc(r.suggestion)+'</p>':'')+(r.photo?'<div class="hint">Uploaded photo: '+esc(r.photo)+'</div>':'')+(r.signature?'<img class="admin-sig" alt="Visitor signature" src="'+r.signature+'">':'')+'</div>').join('')||'<p class="hint">No reviews yet.</p>'}
+document.getElementById('adminRefresh').addEventListener('click',loadAdmin);
+document.getElementById('adminClear').addEventListener('click',()=>{if(confirm('Clear local review history?')){localStorage.removeItem('trata_reviews');loadAdmin()}});
+document.getElementById('adminExport').addEventListener('click',()=>{const a=getReviews(),rows=[['Name','Visitor Type','Rating','Star Style','Review','Suggestion','Photo','Signature','Created'],...a.map(r=>[r.name,r.visitor,r.rating,r.starStyle,r.review,r.suggestion,r.photo,r.signature?'Yes':'No',r.created_at])];const csv=rows.map(row=>row.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\n');const u=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));const x=document.createElement('a');x.href=u;x.download='trata-reviews.csv';x.click();setTimeout(()=>URL.revokeObjectURL(u),1000)});
+// Optional deep link: /?admin=1 opens the unified admin area
+if(new URLSearchParams(location.search).get('admin')==='1'){adminPanel.style.display='block';setTimeout(()=>adminPanel.scrollIntoView({behavior:'smooth'}),100)}
+</script></body></html>
